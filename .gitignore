@@ -47,3 +47,4 @@ next-env.d.ts
 /.env.local
 tests-e2e/screenshots/
 /public/maplibre/
+!.env.example
