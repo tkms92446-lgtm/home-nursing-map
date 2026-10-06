@@ -1,0 +1,16 @@
+# ローカル開発用データベース（PostgreSQL 16 + PostGIS）
+#   起動: docker compose up -d     停止: docker compose down
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: hnm
+      POSTGRES_PASSWORD: hnm
+      POSTGRES_DB: hnm
+    ports:
+      - "5432:5432"
+    volumes:
+      - hnm-db:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+volumes:
+  hnm-db:

@@ -18,7 +18,8 @@
     "predev": "node scripts/copy-maplibre-worker.mjs",
     "prebuild": "node scripts/copy-maplibre-worker.mjs",
     "remove-source": "tsx scripts/remove-source.ts",
-    "remove:fixture": "tsx scripts/remove-source.ts --source fixture_fictional_130"
+    "remove:fixture": "tsx scripts/remove-source.ts --source fixture_fictional_130",
+    "data:osaka": "tsx scripts/import-mhlw.ts --file data/raw/jigyosho_130_all_20260709180342.csv --as-of 2026-06-30 --prefecture 大阪府 && tsx scripts/geocode.ts --prefecture 大阪府 --limit 5000"
   },
   "dependencies": {
     "csv-parse": "^7.0.3",

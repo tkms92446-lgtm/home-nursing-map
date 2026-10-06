@@ -5,6 +5,8 @@
 
 初期データには、厚生労働省「介護サービス情報公表システム」の**公的オープンデータ**を使います。各事業所に登録作業を依頼する必要はありません。
 
+> **はじめて使う方へ**：パソコンでアプリを開く手順を [docs/はじめかた.md](docs/はじめかた.md) に初心者向けにまとめています。
+
 > 現在は MVP（大阪府・大阪市・天王寺区で動作確認済み）です。データ構造・API・DB は全国展開を前提にしています。
 
 ---
@@ -200,12 +202,12 @@ psql hnm -c "CREATE EXTENSION postgis;"
 npm run db:migrate
 ```
 
-Docker（PostGIS 入りイメージ）:
+Docker（同梱の `docker-compose.yml`。PostGIS 入り、テスト用DBも自動作成）:
 
 ```bash
-docker run -d --name hnm-db -p 5432:5432 -e POSTGRES_USER=hnm -e POSTGRES_PASSWORD=hnm -e POSTGRES_DB=hnm postgis/postgis:16-3.4
-docker exec hnm-db createdb -U hnm hnm_test
+docker compose up -d
 npm run db:migrate
+npm run data:osaka     # data/raw/ の厚労省CSVから大阪府を取り込み + Geocoding
 ```
 
 Supabase（無料枠）: Database → Extensions で `postgis` を有効化し、接続文字列（Session pooler 推奨）を `DATABASE_URL` に設定して `npm run db:migrate`。
