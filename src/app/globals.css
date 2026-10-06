@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
+@theme {
+  --color-coral-50: #fff3f0;
+  --color-coral-200: #fdc8bc;
+  --color-coral-500: #e8573f;
+  --color-coral-600: #d04429;
+  --font-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #fafaf9;
+  color: #1c1917;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 地図マーカー ===== */
+.hnm-cluster {
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  background: rgba(15, 118, 110, 0.92);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+.hnm-cluster-aggregate {
+  background: rgba(68, 64, 60, 0.88);
+}
+.hnm-search-marker {
+  width: 26px;
+  height: 34px;
+  background: #e8573f;
+  clip-path: path("M13 0C5.8 0 0 5.7 0 12.8 0 22.4 13 34 13 34S26 22.4 26 12.8C26 5.7 20.2 0 13 0Z");
+  position: relative;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+.hnm-search-marker::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #fff;
+}
+.hnm-current-marker {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #2563eb;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.22), 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.hnm-popup-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: #1c1917;
+  margin-bottom: 4px;
+  padding-right: 14px;
+}
+.hnm-popup-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f766e;
+}
+.maplibregl-popup-content {
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
 }

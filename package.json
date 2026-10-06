@@ -6,21 +6,44 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "import:mhlw": "tsx scripts/import-mhlw.ts",
+    "import:fixture": "tsx scripts/import-mhlw.ts --source fixture_fictional_130 --file data/fixtures/fictional_jigyosho_130.csv --as-of 2026-06-30",
+    "geocode": "tsx scripts/geocode.ts",
+    "e2e": "node tests-e2e/smoke.mjs",
+    "postinstall": "node scripts/copy-maplibre-worker.mjs",
+    "predev": "node scripts/copy-maplibre-worker.mjs",
+    "prebuild": "node scripts/copy-maplibre-worker.mjs",
+    "remove-source": "tsx scripts/remove-source.ts",
+    "remove:fixture": "tsx scripts/remove-source.ts --source fixture_fictional_130"
   },
   "dependencies": {
+    "csv-parse": "^7.0.3",
+    "iconv-lite": "^0.7.3",
+    "maplibre-gl": "^6.12.0",
     "next": "16.3.8",
+    "pg": "^8.23.1",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^22.20.5",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^18.0.5",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
+    "playwright": "^1.63.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vitest": "^5.0.3"
   }
 }

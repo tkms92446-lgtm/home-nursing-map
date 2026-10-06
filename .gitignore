@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# project data
+/data/raw/*
+!/data/raw/.gitkeep
+/data/cache/
+/.env.local
+tests-e2e/screenshots/
+/public/maplibre/
